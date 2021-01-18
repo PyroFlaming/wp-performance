@@ -1,0 +1,10 @@
+{
+    "require": {
+        "jandc/css-from-html-extractor": "^1.2"
+    },
+    "autoload": {
+        "psr-4": {
+          "PerformanceBoost\\": "src/"
+        }
+      }
+}

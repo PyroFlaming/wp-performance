@@ -1,0 +1,25 @@
+{
+  "name": "jandc/css-from-html-extractor",
+  "type": "library",
+  "description": "Php library which determines which css is used from html snippets.",
+  "homepage": "https://github.com/JanDC/css-from-html-extractor",
+  "license": "ISC",
+  "authors": [
+    {
+      "name": "Jan Decavele",
+      "email": "jan.decavele@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^5.5 || ^7",
+    "symfony/css-selector": "^2.7|~3.0",
+    "twig/twig": "^1.0|^2.0",
+    "doctrine/cache": "^1.7"
+  },
+  "autoload": {
+    "psr-4": {
+      "CSSFromHTMLExtractor\\": "src/"
+    }
+  }
+}
