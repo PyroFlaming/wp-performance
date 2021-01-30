@@ -10,7 +10,7 @@ return array(
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
     'Symfony\\Polyfill\\Ctype\\' => array($vendorDir . '/symfony/polyfill-ctype'),
     'Symfony\\Component\\CssSelector\\' => array($vendorDir . '/symfony/css-selector'),
-    'PerformanceBoost\\' => array($baseDir . '/src'),
+    'PerformanceBoost\\' => array($baseDir . '/performance-boost'),
     'Doctrine\\Common\\Cache\\' => array($vendorDir . '/doctrine/cache/lib/Doctrine/Common/Cache'),
     'CSSFromHTMLExtractor\\' => array($vendorDir . '/jandc/css-from-html-extractor/src'),
 );

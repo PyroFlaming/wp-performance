@@ -55,7 +55,7 @@ class ComposerStaticInitca2a047068f33f38b01e09949fe2542b
         ),
         'PerformanceBoost\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/src',
+            0 => __DIR__ . '/../..' . '/performance-boost',
         ),
         'Doctrine\\Common\\Cache\\' => 
         array (
@@ -121,7 +121,7 @@ class ComposerStaticInitca2a047068f33f38b01e09949fe2542b
         'Doctrine\\Common\\Cache\\WinCacheCache' => __DIR__ . '/..' . '/doctrine/cache/lib/Doctrine/Common/Cache/WinCacheCache.php',
         'Doctrine\\Common\\Cache\\XcacheCache' => __DIR__ . '/..' . '/doctrine/cache/lib/Doctrine/Common/Cache/XcacheCache.php',
         'Doctrine\\Common\\Cache\\ZendDataCache' => __DIR__ . '/..' . '/doctrine/cache/lib/Doctrine/Common/Cache/ZendDataCache.php',
-        'PerformanceBoost\\performanceBoost' => __DIR__ . '/../..' . '/src/performanceBoost.php',
+        'PerformanceBoost\\Booster' => __DIR__ . '/../..' . '/performance-boost/Booster.php',
         'Symfony\\Component\\CssSelector\\CssSelectorConverter' => __DIR__ . '/..' . '/symfony/css-selector/CssSelectorConverter.php',
         'Symfony\\Component\\CssSelector\\Exception\\ExceptionInterface' => __DIR__ . '/..' . '/symfony/css-selector/Exception/ExceptionInterface.php',
         'Symfony\\Component\\CssSelector\\Exception\\ExpressionErrorException' => __DIR__ . '/..' . '/symfony/css-selector/Exception/ExpressionErrorException.php',

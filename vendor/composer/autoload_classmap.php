@@ -49,7 +49,7 @@ return array(
     'Doctrine\\Common\\Cache\\WinCacheCache' => $vendorDir . '/doctrine/cache/lib/Doctrine/Common/Cache/WinCacheCache.php',
     'Doctrine\\Common\\Cache\\XcacheCache' => $vendorDir . '/doctrine/cache/lib/Doctrine/Common/Cache/XcacheCache.php',
     'Doctrine\\Common\\Cache\\ZendDataCache' => $vendorDir . '/doctrine/cache/lib/Doctrine/Common/Cache/ZendDataCache.php',
-    'PerformanceBoost\\performanceBoost' => $baseDir . '/src/performanceBoost.php',
+    'PerformanceBoost\\Booster' => $baseDir . '/performance-boost/Booster.php',
     'Symfony\\Component\\CssSelector\\CssSelectorConverter' => $vendorDir . '/symfony/css-selector/CssSelectorConverter.php',
     'Symfony\\Component\\CssSelector\\Exception\\ExceptionInterface' => $vendorDir . '/symfony/css-selector/Exception/ExceptionInterface.php',
     'Symfony\\Component\\CssSelector\\Exception\\ExpressionErrorException' => $vendorDir . '/symfony/css-selector/Exception/ExpressionErrorException.php',
