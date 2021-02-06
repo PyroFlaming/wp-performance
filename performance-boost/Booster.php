@@ -2,6 +2,8 @@
 
 namespace PerformanceBoost;
 
+use CSSFromHTMLExtractor\CssFromHTMLExtractor as ExtractorExtension;
+
 class Booster
 {
     public function __construct() {
@@ -26,11 +28,34 @@ class Booster
 
         var_dump('PAGE OPTIMIZE');
         $html = self::boost_js_extractor($html);
-
+        $html = self::boost_css_extractor($html);
         return $html;
     }
 
     private function boost_css_extractor($html){
+        
+        try {
+            $optimize_html = $html;
+
+            $critical_css =new ExtractorExtension;
+            // $critical_css_extractor = new CssFromHTMLExtractor();       
+            // preg_match_all('\<link .+href="\..+css.+"\>', $optimize_html, $match);
+            preg_match_all('<link.*(href=[\"|\']{1}(\S+\.css?\S+)[\"|\']{1}).*>', $optimize_html, $styles_links, PREG_SET_ORDER);
+
+            foreach($styles_links as $index => $style) {
+                // todo get critical css and append it to html
+
+
+                $template_style = str_replace('link', 'template pf-boost-id="boost-style-'. $key .'" ', $style[0]);
+                $template_style = str_replace('href=', 'pf-boost-href=', $template_style);
+                $optimize_html = str_replace($style[0], $template_style . '</template>', $optimize_html);
+            }
+
+            $html = $optimize_html;
+        } catch (\Throwable $th) {
+            throw $th;
+            die();
+        }
 
         return $html;
     }
