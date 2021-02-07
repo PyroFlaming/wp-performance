@@ -72,7 +72,8 @@ class Booster
             // var_dump($scripts_tags);
 
             foreach ($scripts_tags as $key => $script) {
-                $mod_script = str_replace('script', 'template', $script[0]);
+                $mod_script = str_replace($script[1], '', $script[0]);
+                $mod_script = str_replace('script', 'template', $mod_script);
                 $mod_script = str_replace('<template', '<template pf-boost-id="boost-script-' . $key . '" ', $mod_script);
                 
                 // getter src attr content.
@@ -82,13 +83,12 @@ class Booster
                     $mod_script = str_replace('src=','pf-boost-src=',$mod_script);
                 } else if ($script[1]){
                     array_push($inline_scripts, array('pf-boost-id'=> 'boost-script-'. $key,'content'=>$script[1]));
-                    $mod_script = str_replace($script[1], '', $mod_script);
                 }
 
                 $optimize_html = str_replace($script[0],$mod_script, $optimize_html);
-                $optimize_html = str_replace('</head>','<script>var boostInlineScripts=' . json_encode($inline_scripts) . '</script></head>', $optimize_html);
             }
-
+            
+            $optimize_html = str_replace('</head>','<script>var boostInlineScripts=' . json_encode($inline_scripts) . '</script></head>', $optimize_html);
             $html = $optimize_html;
         } catch (\Throwable $th) {
             //throw $th;
