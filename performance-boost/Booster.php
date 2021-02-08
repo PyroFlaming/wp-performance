@@ -29,7 +29,13 @@ class Booster
         var_dump('PAGE OPTIMIZE');
         $html = self::boost_js_extractor($html);
         $html = self::boost_css_extractor($html);
+        $html = self::append_plugin_script($html);
         return $html;
+    }
+
+    private function append_plugin_script($html) {
+        $base_url = BASE_URL;
+        return str_replace('</head>','<script src="'.$base_url.'assets/scripts-loader.js" deffer="true"></script></head>', $html);
     }
 
     private function boost_css_extractor($html){
