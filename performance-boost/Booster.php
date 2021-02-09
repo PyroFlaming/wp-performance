@@ -43,24 +43,49 @@ class Booster
         try {
             $optimize_html = $html;
 
-            $critical_css =new ExtractorExtension;
-            // $critical_css_extractor = new CssFromHTMLExtractor();       
+            $critical_css_extractor = new ExtractorExtension();       
             // preg_match_all('\<link .+href="\..+css.+"\>', $optimize_html, $match);
             preg_match_all('<link.*(href=[\"|\']{1}(\S+\.css?\S+)[\"|\']{1}).*>', $optimize_html, $styles_links, PREG_SET_ORDER);
-
+            
             foreach($styles_links as $index => $style) {
                 // todo get critical css and append it to html
-
-
                 $template_style = str_replace('link', 'template pf-boost-id="boost-style-'. $key .'" ', $style[0]);
                 $template_style = str_replace('href=', 'pf-boost-href=', $template_style);
-                $optimize_html = str_replace($style[0], $template_style . '</template>', $optimize_html);
+                
+                $file_path = str_replace(home_url() .'/', get_home_path(), $style[2]);
+
+                // check for query params in end ?ver=1.3.5.6... etc
+                if(($query_params_index = strpos($file_path, '?')) !== false){
+                    var_dump($query_params_index);
+                    $file_path = substr($file_path, 0, $query_params_index);
+                }
+
+                // try to reade file directly from file system
+                if (($content = @file_get_contents($file_path)) !== false) {
+                    // change the link only if we get css with no problems.
+                    $optimize_html = str_replace($style[0], $template_style . '</template>', $optimize_html);
+                    $critical_css_extractor->addBaseRules($content);
+                    continue;
+                }
+
+                // fail back for not found files.
+                if (($content = @file_get_contents($style[2])) !== false) {
+                    // change the link only if we get css with no problems.
+                    $optimize_html = str_replace($style[0], $template_style . '</template>', $optimize_html);
+                    $critical_css_extractor->addBaseRules($content);
+                    continue;
+                }
             }
+
+            $critical_css_extractor->addHtmlToStore($optimize_html);
+
+            $critical_css =  $critical_css_extractor->buildExtractedRuleSet();
+
+            $optimize_html = str_replace('</head>', '<style data-boost-critical-css="true">' . $critical_css . '</style></head>', $optimize_html);
 
             $html = $optimize_html;
         } catch (\Throwable $th) {
             throw $th;
-            die();
         }
 
         return $html;
