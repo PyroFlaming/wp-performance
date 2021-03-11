@@ -14,7 +14,7 @@ class Booster
         add_filter('booster_filter_output_content', function($html) {
             if(!is_admin()){
                 return self::boost_optimize_page($html);
-            }else {
+            } else {
                 return $html;
             }
         });
@@ -35,7 +35,7 @@ class Booster
 
     private function append_plugin_script($html) {
         $base_url = BASE_URL;
-        return str_replace('</head>','<script src="'.$base_url.'assets/scripts-loader.js" deffer="true"></script></head>', $html);
+        return str_replace('</head>','<script src="'.$base_url.'assets/pf-boost-scripts-loader.js" deffer="true"></script></head>', $html);
     }
 
     private function boost_css_extractor($html){
